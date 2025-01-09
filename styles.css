@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .survey-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  header {
+    background: linear-gradient(135deg, #d32f2f, #c2185b);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  header h1 {
+    font-size: 36px;
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  
+  header p {
+    font-size: 18px;
+    margin: 10px 0 0;
+  }
+  
+  .screen {
+    display: none;
+  }
+  
+  .screen.active {
+    display: block;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    background: #d32f2f;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #b71c1c;
+  }
+  
+  video {
+    width: 100%;
+    height: auto;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
