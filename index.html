@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mayor Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .survey-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #d32f2f;
+        }
+        .screen {
+            display: none;
+        }
+        .screen.active {
+            display: block;
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            background: #d32f2f;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #b71c1c;
+        }
+        iframe {
+            width: 100%;
+            height: 315px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="survey-container">
+        <!-- Video Background -->
+        <iframe 
+            src="https://www.youtube.com/embed/xrRDlOWR1OU?autoplay=1&loop=1&mute=1&playlist=xrRDlOWR1OU&rel=0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen>
+        </iframe>
+
+        <!-- Introduction Screen -->
+        <div id="intro-screen" class="screen active">
+            <h1>🏛️ Election Survey 2025</h1>
+            <p>Let us know your thoughts on who should lead your community!</p>
+            <button onclick="startSurvey()">Start Now</button>
+        </div>
+
+        <!-- Question Screens -->
+        <div id="question-screens" class="screen">
+            <h2 id="question-text"></h2>
+            <div class="options">
+                <button class="option" onclick="nextQuestion(0)">Option 1</button>
+                <button class="option" onclick="nextQuestion(1)">Option 2</button>
+            </div>
+        </div>
+
+        <!-- Thank You Screen -->
+        <div id="thankyou-screen" class="screen">
+            <h2>🎉 Thank You for Participating!</h2>
+            <p>Your responses have been recorded.</p>
+            <button onclick="restartSurvey()">Start Over</button>
+        </div>
+    </div>
+
+    <script>
+        // Google Apps Script URL
+        const googleScriptURL = "https://script.google.com/macros/s/AKfycbzxnsg3cdXeZJl39w7V_GMQU7ZhDqqqqhfg9Y4f6ssJCiJMwxEUEBmahLoFb3ShIRh1Vw/exec";
+
+        // Questions and Options
+        const questions = [
+            { text: "Who is your bet for Mayor?", options: ["Ricky Buenaventura", "Omeng Ramos"] },
+            { text: "What quality do you value most in a mayor?", options: ["Transparency", "Leadership"] },
+            { text: "Which community project is your priority?", options: ["Infrastructure development", "Education reform"] },
+            { text: "Who do you think will best handle disaster management?", options: ["Ricky Buenaventura", "Omeng Ramos"] },
+            { text: "Who is more approachable to citizens?", options: ["Ricky Buenaventura", "Omeng Ramos"] },
+            { text: "Which slogan resonates more with you?", options: ["Responsable Sa Bayan", "Bayan Muna, Tao Muna"] },
+            { text: "Who will improve healthcare services better?", options: ["Ricky Buenaventura", "Omeng Ramos"] },
+            { text: "Who do you trust to maintain peace and order?", options: ["Ricky Buenaventura", "Omeng Ramos"] },
+            { text: "Who do you think has a better track record of accomplishments?", options: ["Ricky Buenaventura", "Omeng Ramos"] },
+            { text: "Who will prioritize youth programs?", options: ["Ricky Buenaventura", "Omeng Ramos"] },
+        ];
+
+        let currentQuestion = 0;
+        let responses = [];
+
+        // Start Survey
+        function startSurvey() {
+            document.getElementById('intro-screen').classList.remove('active');
+            document.getElementById('question-screens').classList.add('active');
+            loadQuestion();
+        }
+
+        // Load Current Question
+        function loadQuestion() {
+            const questionText = document.getElementById('question-text');
+            const optionButtons = document.querySelectorAll('.option');
+            const question = questions[currentQuestion];
+
+            questionText.textContent = question.text;
+            optionButtons[0].textContent = question.options[0];
+            optionButtons[1].textContent = question.options[1];
+        }
+
+        // Go to Next Question
+        function nextQuestion(choice) {
+            // Save current question and selected response
+            responses.push({
+                question: questions[currentQuestion].text,
+                answer: questions[currentQuestion].options[choice],
+            });
+
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                endSurvey();
+                sendToGoogleSheet(); // Save all responses to Google Sheet
+            }
+        }
+
+        // End Survey
+        function endSurvey() {
+            document.getElementById('question-screens').classList.remove('active');
+            document.getElementById('thankyou-screen').classList.add('active');
+        }
+
+        // Restart Survey
+        function restartSurvey() {
+            currentQuestion = 0;
+            responses = [];
+            document.getElementById('thankyou-screen').classList.remove('active');
+            document.getElementById('intro-screen').classList.add('active');
+        }
+
+        // Send response to Google Sheet
+        function sendToGoogleSheet() {
+            const data = { responses };
+
+            fetch(googleScriptURL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => console.log("Success:", data))
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html>
