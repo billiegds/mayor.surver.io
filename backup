@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mayor Survey</title>
+
+    <!-- Favicon link for Vote Icon -->
+    <link rel="icon" href="vote_1.png" type="image/png" />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="survey-container">
+      <header>
+        <h1>🏛️ Election Survey 2025</h1>
+        <p>Let us know your thoughts on who should lead your community!</p>
+      </header>
+
+      <!-- Video Element -->
+      <video id="survey-video" autoplay controls>
+        <source src="intro.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <!-- Introduction Screen -->
+      <div id="intro-screen" class="screen active">
+        <button onclick="startSurvey()">Start Now</button>
+      </div>
+
+      <!-- Question Screens -->
+      <div id="question-screens" class="screen">
+        <h2 id="question-text"></h2>
+        <div class="options">
+          <button class="option" onclick="nextQuestion(0)">Omeng Ramos</button>
+          <button class="option" onclick="nextQuestion(1)">Ricky Santos Buenaventura</button>
+        </div>
+      </div>
+
+      <!-- Thank You Screen -->
+      <div id="thankyou-screen" class="screen">
+        <h2>🎉 Thank You for Participating!</h2>
+        <p>Your responses have been recorded.</p>
+       
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

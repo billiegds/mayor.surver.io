@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -74,3 +74,186 @@ body {
     margin-bottom: 20px;
   }
   
+  /* Hide screens by default */
+.screen {
+  display: none;
+}
+
+/* Active screen should be displayed */
+.screen.active {
+  display: block;
+}
+
+/* Hide the form after submission */
+.hidden {
+  display: none;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  background: #d32f2f;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #b71c1c;
+}
+
+
+/* Center the form-group container */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-group label {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+}
+/* Style the select field */
+.form-group select {
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 550px; /* Optional: control max width */
+  display: block;
+  margin-bottom: 0; /* Remove the space between select and input */
+}
+
+/* Style the input field */
+.form-group input {
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 520px; /* Optional: control max width */
+  display: block;
+  margin-top: 0; /* Ensure no space above the input field */
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #d32f2f;
+  background-color: #fff;
+}
+
+/* Checkbox Styling */
+#data-privacy-checkbox-container {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #555;
+  text-align: left; /* Align the content to the right */
+}
+
+#data-privacy-checkbox-container label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start; /* Align the checkbox and label to the right */
+}
+
+#data-privacy-checkbox-container input {
+  margin-left: 12px; /* Space between the checkbox and the label */
+  transform: scale(1.2);
+  margin-right: 10px;
+}
+
+
+/* Button Styling */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  background: #d32f2f;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #b71c1c;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Video Styling */
+video {
+  width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .form-group {
+    grid-template-columns: 1fr; /* Stack vertically on small screens */
+  }
+
+ /* Main container for the form */
+#name-address-fields {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: 20px;
+}
+
+  #name-address-fields h2 {
+    font-size: 20px;
+  }
+
+  .form-group input,
+  .form-group select,
+  button {
+    font-size: 16px;
+  }
+}
+
+/* Style the fieldset */
+fieldset {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the legend */
+legend {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  padding: 0 10px;
+ 
+  text-align: center;
+  width: auto;
+  margin-bottom: 10px;
+}
