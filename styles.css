@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    place-items: center; /* Centers content in both directions */
   }
   
   .survey-container {
@@ -112,11 +113,12 @@ button:hover {
 
 /* Center the form-group container */
 .form-group {
-  display: flex;
-  flex-direction: column;
+  display: block;
+  flex-direction: center;
   align-items: center;
-  margin-bottom: 20px;
-  width: 100%;
+  margin-bottom: 10px;
+  width: auto;
+  height: auto;
 }
 
 .form-group label {
@@ -132,8 +134,9 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 100%;
-  max-width: 550px; /* Optional: control max width */
-  display: block;
+  max-width: 100%; /* Optional: control max width */
+  display: inline-block;
+  margin-top: 20px;
   margin-bottom: 0; /* Remove the space between select and input */
 }
 
@@ -144,9 +147,10 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 100%;
-  max-width: 520px; /* Optional: control max width */
-  display: block;
-  margin-top: 0; /* Ensure no space above the input field */
+  max-width: 89%; /* Optional: control max width */
+  display: inline-block;
+  margin-top: 0px; /* Ensure no space above the input field */
+  padding-left:  30px;
 }
 
 
@@ -218,10 +222,10 @@ video {
 #name-address-fields {
   background-color: white;
   border-radius: 8px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 500px;
+  width: auto;
+  max-width: auto;
   margin: 20px;
 }
 
@@ -236,14 +240,20 @@ video {
   }
 }
 
-/* Style the fieldset */
 fieldset {
   border: 2px solid #ccc;
   border-radius: 8px;
-  padding: 20px;
+  padding: 50px;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: inline-block; /* Ensures the fieldset adjusts to the content width */
+  width: auto; /* Allows width to adapt to the content */
+  max-width: 100%; /* Prevents overflow beyond the container */
+  margin: 20px auto; /* Centers horizontally */
+  background-color: #fff; /* Optional: Add a background color */
+  text-align: left; /* Align text for better readability */
 }
+
 
 /* Style the legend */
 legend {
